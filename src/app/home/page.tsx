@@ -26,7 +26,7 @@ export default function Home() {
   if (!isAuth) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gradient-to-br from-blue-900 to-indigo-900 relative">
+    <div className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gray-50 relative">      
       <div className="w-full flex justify-between items-center px-10 pt-5 absolute top-0">
         <h1 className="text-3xl font-bold text-white tracking-wider">Selamat Datang!</h1>
         <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl font-bold transition-transform hover:scale-105 shadow-lg">

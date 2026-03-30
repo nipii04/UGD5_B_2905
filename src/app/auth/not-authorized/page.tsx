@@ -13,7 +13,7 @@ export default function NotAuthorized() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-blue-500 w-full rounded-2xl p-10 min-h-[400px]">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 w-full p-10">
       <div className="bg-blue-100 text-black p-8 rounded-xl shadow-lg text-center w-full max-w-md">
         <h1 className="text-2xl font-bold text-red-600 mb-2">❌ Anda belum login</h1>
         <p className="mb-6 text-gray-600">Silakan login terlebih dahulu untuk mengakses game.</p>

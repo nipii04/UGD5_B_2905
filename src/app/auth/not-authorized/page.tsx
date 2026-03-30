@@ -3,24 +3,22 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image'; 
 import { FaArrowLeft } from 'react-icons/fa';
 
-
 import NotAuthorizedImage from './R.jpg';
 
 export default function NotAuthorized() {
   const router = useRouter();
-
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 relative bg-transparent">
       
       <div className="bg-[#9cb6fa] p-6 rounded-3xl shadow-2xl text-center w-full max-w-sm flex flex-col items-center border border-white/20 animate-fade-in">
         
-        <div className="w-full h-44 relative mb-5 overflow-hidden rounded-2xl shadow-inner border border-black/10">
+        <div className="w-full h-48 relative mb-5 overflow-hidden rounded-2xl shadow-inner border border-black/10 bg-gray-900">
           <Image 
             src={NotAuthorizedImage} 
             alt="Akses Ditolak - Belum Login" 
             fill 
-            className="object-cover" 
+            className="object-contain p-2" 
             priority 
           />
         </div>

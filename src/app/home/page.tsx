@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
 
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden bg-transparent">
       
       {/* Header */}
       <div className="absolute top-10 flex flex-col items-center w-full z-20">

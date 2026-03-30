@@ -15,7 +15,7 @@ export default function NotAuthorized() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 to-blue-600 p-4 relative">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 relative bg-transparent">
       
       <div className="bg-[#9cb6fa] p-5 rounded-2xl shadow-2xl text-center w-full max-w-sm flex flex-col items-center">
         

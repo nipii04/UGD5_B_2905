@@ -1,10 +1,12 @@
 'use client';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export default function NotAuthorized() {
   const router = useRouter();
 
+  // Redirect otomatis setelah 3 detik
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push('/auth/login');
@@ -13,16 +15,34 @@ export default function NotAuthorized() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 w-full p-10">
-      <div className="bg-blue-100 text-black p-8 rounded-xl shadow-lg text-center w-full max-w-md">
-        <h1 className="text-2xl font-bold text-red-600 mb-2">❌ Anda belum login</h1>
-        <p className="mb-6 text-gray-600">Silakan login terlebih dahulu untuk mengakses game.</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-400 to-blue-600 p-4 relative">
+      
+      <div className="bg-[#9cb6fa] p-5 rounded-2xl shadow-2xl text-center w-full max-w-sm flex flex-col items-center">
+        
+        <img 
+          src="https://media.tenor.com/n14M58g1K3YAAAAC/traffic-cars.gif" 
+          alt="Belum Login" 
+          className="w-full h-44 object-cover rounded-xl mb-4 shadow-sm"
+        />
+
+        {/* Teks Judul */}
+        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+          <span className="text-red-500">❌</span> Anda belum login
+        </h1>
+        
+        {/* Sub Teks */}
+        <p className="mt-1.5 text-sm text-gray-700 font-medium">
+          Silakan login terlebih dahulu
+        </p>
+
+        {/* Tombol Kembali */}
         <button 
           onClick={() => router.push('/auth/login')} 
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors"
+          className="mt-5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-5 py-2 rounded-lg transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-md"
         >
-          Kembali
+          <FaArrowLeft className="text-xs" /> Kembali
         </button>
+
       </div>
     </div>
   );

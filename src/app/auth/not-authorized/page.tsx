@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 export default function NotAuthorized() {
   const router = useRouter();
 
-  // Redirect otomatis setelah 3 detik
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push('/auth/login');

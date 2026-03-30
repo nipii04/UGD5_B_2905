@@ -9,7 +9,6 @@ export default function GameTebakAngka() {
   const [attempts, setAttempts] = useState<number>(0);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
-  // useEffect untuk mengacak angka saat komponen pertama kali dirender
   useEffect(() => {
     generateRandomNumber();
   }, []);
@@ -23,11 +22,16 @@ export default function GameTebakAngka() {
     setGuess('');
   };
 
-  const handleGuess = (e: React.FormEvent) => {
+  const handleGuess = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isGameOver) return;
 
-    const guessNumber = parseInt(guess);
+    if (!guess) {
+      toast.warning('Masukkan angka terlebih dahulu!', { autoClose: 1500 });
+      return;
+    }
+
+    const guessNumber = parseInt(guess, 10);
     
     if (isNaN(guessNumber) || guessNumber < 1 || guessNumber > 100) {
       toast.warning('Masukkan angka yang valid (1-100)!', { autoClose: 1500 });

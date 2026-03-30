@@ -14,11 +14,11 @@ export default function RegisterPage() {
   const router = useRouter();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   
-  const [currentCaptcha, setCurrentCaptcha] = useState('');
-  const [captchaInput, setCaptchaInput] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [strength, setStrength] = useState(0);
+  const [currentCaptcha, setCurrentCaptcha] = useState<string>('');
+  const [captchaInput, setCaptchaInput] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [strength, setStrength] = useState<number>(0);
 
   const passwordValue = watch('password') || '';
 
@@ -26,13 +26,13 @@ export default function RegisterPage() {
     setCurrentCaptcha(generateCaptcha());
   }, []);
 
-  // Hitung Password Strength
   useEffect(() => {
+    const pwd = passwordValue || '';
     const str = Math.min(
-      (passwordValue.length > 7 ? 25 : 0) +
-      (/[A-Z]/.test(passwordValue) ? 25 : 0) +
-      (/[0-9]/.test(passwordValue) ? 25 : 0) +
-      (/[^A-Za-z0-9]/.test(passwordValue) ? 25 : 0),
+      (pwd.length > 7 ? 25 : 0) +
+      (/[A-Z]/.test(pwd) ? 25 : 0) +
+      (/[0-9]/.test(pwd) ? 25 : 0) +
+      (/[^A-Za-z0-9]/.test(pwd) ? 25 : 0),
       100
     );
     setStrength(str);
@@ -61,7 +61,6 @@ export default function RegisterPage() {
     <AuthFromWrapper title="Register">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         
-        {/* Username */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700">Username <span className="text-gray-500 text-xs">(3-8 karakter)</span></label>
           <input
@@ -76,7 +75,6 @@ export default function RegisterPage() {
           {errors.username && <p className="text-red-500 text-sm italic mt-1">{errors.username.message as string}</p>}
         </div>
 
-        {/* Email */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700">Email</label>
           <input
@@ -93,7 +91,6 @@ export default function RegisterPage() {
           {errors.email && <p className="text-red-500 text-sm italic mt-1">{errors.email.message as string}</p>}
         </div>
 
-        {/* Nomor Telepon */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700">Nomor Telepon</label>
           <input
@@ -109,7 +106,6 @@ export default function RegisterPage() {
           {errors.nomortelp && <p className="text-red-500 text-sm italic mt-1">{errors.nomortelp.message as string}</p>}
         </div>
 
-        {/* Password */}
         <div className="space-y-2 relative">
           <label className="text-sm font-medium text-gray-700">Password</label>
           <div className="relative">
@@ -133,7 +129,6 @@ export default function RegisterPage() {
           {errors.password && <p className="text-red-500 text-sm italic mt-1">{errors.password.message as string}</p>}
         </div>
 
-        {/* Confirm Password */}
         <div className="space-y-2 relative">
           <label className="text-sm font-medium text-gray-700">Confirm Password</label>
           <div className="relative">
@@ -150,7 +145,6 @@ export default function RegisterPage() {
           {errors.confirmPassword && <p className="text-red-500 text-sm italic mt-1">{errors.confirmPassword.message as string}</p>}
         </div>
 
-        {/* Captcha */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
             <span className="text-sm font-medium text-gray-700">Captcha:</span>
@@ -168,7 +162,7 @@ export default function RegisterPage() {
           />
         </div>
 
-        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg">
+        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg mt-4">
           Register
         </button>
 
